@@ -5,3 +5,4 @@ myvenv
 db.sqlite3
 /static
 .DS_Store
+*ocal_settings.py
