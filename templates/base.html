@@ -1,0 +1,499 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700" rel="stylesheet">
+    
+
+    
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css" media="screen,projection" />
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    header a {
+        font-family: "Cinzel", serif;
+        /* font-weight: 700; */
+    }
+
+    .topnav {
+        background: none;
+        box-shadow: none;
+        height: 30px;
+        background-color: #e0e0e0;
+        border-bottom: 1px solid #e0e0e0;
+        color: black;
+    }
+
+    .topnav a {
+        color: black;
+    }
+
+    footer {
+        background-color: #e0e0e0;
+    }
+
+    main>.row {
+        margin: 0 40px;
+    }
+
+    
+    header,
+    main,
+    footer {
+        padding-left: 300px;
+    }
+
+    .sidenav {
+        box-shadow: none;
+        border-right: 1px solid #e0e0e0;
+    }
+
+    .logo {
+        text-align: center;
+        padding: 3em 0 2em 0;
+    }
+
+    body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+
+    main {
+        flex: 1 0 auto;
+    }
+
+    .light-bg {
+        background-color: #cdf4e5;
+    }
+
+    textarea {
+        border: 1px solid black;
+        resize: none;
+        height: 250px;
+        padding: 20px;
+    }
+
+    nav {
+        line-height: 30px;
+        font-weight: 400;
+    }
+
+    header {
+        position: relative;
+    }
+    .sidenav-trigger {
+        position: absolute;
+        top: 3px;
+        left: 10px;
+        color: black;
+    }
+
+    .sidenav .divider {
+        margin: 0;
+    }
+
+    .modal {
+        width: 30%;
+        max-height: 90%;
+    }
+
+
+
+    /* social login */
+
+    #login-modal .modal-content {
+        padding: 2em 2em 0 2em;
+    }
+    #login-modal .row {
+        padding: 1em 0;
+        border-radius: 2px;
+    }
+    #login-modal i{
+        font-size: 2em;
+    }
+
+    .facebook {
+      background-color: #3b5998 !important;
+      color: #fff !important;
+    }
+    .facebook i {
+      color: #fff !important;
+    }
+    .facebook:hover {
+      background-color: #4c70ba !important;
+    }
+
+    .github {
+      background-color: #444444 !important;
+      color: #fff !important;
+    }
+    .github i {
+      color: #fff !important;
+    }
+    .github:hover {
+      background-color: #5e5e5e !important;
+    }
+    .google {
+      background-color: #dd4b39 !important;
+      color: #fff !important;
+    }
+    .google i {
+      color: #fff !important;
+    }
+    .google:hover {
+      background-color: #e47365 !important;
+    }
+
+    @media only screen and (max-width: 992px) {
+        header,
+        main,
+        footer {
+            padding-left: 0;
+        }
+
+        main>.row {
+            margin: 0 10px;
+        }
+
+        .modal {
+            width: 90%;
+        }
+    }
+
+    /* PrismJS 1.15.0
+https://prismjs.com/download.html#themes=prism&languages=python&plugins=line-numbers */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: black;
+    background: none;
+    text-shadow: 0 1px white;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none;
+    background: #b3d4fc;
+}
+
+@media print {
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+    padding: .1em;
+    border-radius: .3em;
+    white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #999;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #07a;
+}
+
+.token.function,
+.token.class-name {
+    color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #e90;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+pre[class*="language-"].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre[class*="language-"].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em; /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+    .line-numbers-rows > span {
+        pointer-events: none;
+        display: block;
+        counter-increment: linenumber;
+    }
+
+        .line-numbers-rows > span:before {
+            content: counter(linenumber);
+            color: #999;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+        }
+
+
+
+    </style>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content center-align">
+            <img src="{% static 'logo2.jpg' %}"/>
+            <div class="section">
+                <h4>Login</h4>
+                <div class="section">
+
+                    <div class="row github valign-wrapper" style="padding: 1em 0">
+                        <div class="col s3"><i class="fa fa-github"></i></div>
+                        <div class="col s9">Sign in with Github</div>
+                    </div>
+                    <div class="row google valign-wrapper" style="padding: 1em 0">
+                        <div class="col s3"><i class="fa fa-google"></i></div>
+                        <div class="col s9">Sign in with Google</div>
+                    </div>
+                    <div class="row facebook valign-wrapper" style="padding: 1em 0">
+                        <div class="col s3"><i class="fa fa-facebook"></i></div>
+                        <div class="col s9">Sign in with Facebook</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="reg-modal" class="modal">
+        <div class="modal-content center-align">
+            <img src="{% static 'logo2.jpg' %}"/>
+            <div class="section">
+                <h4>Register</h4>
+                <div class="section">
+
+                    <div class="row github valign-wrapper" style="padding: 1em 0">
+                        <div class="col s3"><i class="fa fa-github"></i></div>
+                        <div class="col s9">Register with Github</div>
+                    </div>
+                    <div class="row google valign-wrapper" style="padding: 1em 0">
+                        <div class="col s3"><i class="fa fa-google"></i></div>
+                        <div class="col s9">Register with Google</div>
+                    </div>
+                    <div class="row facebook valign-wrapper" style="padding: 1em 0">
+                        <div class="col s3"><i class="fa fa-facebook"></i></div>
+                        <div class="col s9">Register with Facebook</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+
+        <nav class="topnav">
+            <div class="nav-wrapper">
+                <div class="col s12 right-align">
+                    <ul class="right">
+                        <li>
+                            <a class="modal-trigger" href="#reg-modal">Register</a>
+                        </li>
+                        <li>
+                            <a class="modal-trigger" href="#login-modal">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <ul id="slide-out" class="sidenav sidenav-fixed" style="line-height: 39px;">
+            <li class="logo">
+                <img src="{% static 'logo.jpg' %}"/>
+            </li>
+            <!-- <li>
+                <div class="container">
+                    <div class="row">
+                        <div class="col s6 btn-flat center-align" style="border-radius: 2px; border: 1px solid #e0e0e0">
+                            Login
+                        </div>
+                        <div class="col s6 btn-flat center-align" style="border-radius: 2px; border: 1px solid #e0e0e0">
+                            Register
+                        </div>
+                    </div>
+                </div>
+            </li> -->
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li><a href="index">Home</a></li>
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li><a class="subheader">Tools</a></li>
+            <li><a class="waves-effect" href="segmentation">&nbsp;&nbsp;Segmentation</a></li>
+            <li><a class="waves-effect" href="concordance">&nbsp;&nbsp;Concordance</a></li>
+            <li><a class="waves-effect" href="collocation">&nbsp;&nbsp;Collocation</a></li>
+            <li><a class="waves-effect" href="sentipol">&nbsp;&nbsp;Sentipol</a></li>
+            <li><a class="waves-effect" href="wordcloud">&nbsp;&nbsp;Wordcloud</a></li>
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li><a class="waves-effect" href="apidoc">API Documentation</a></li>
+        </ul>
+         <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+    </header>
+    <main>
+        {% block main %} {% endblock %}
+    </main>
+    <footer>
+        <div class="footer-copyright">
+            <p style="margin-left: 20px">本著作係採用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/tw/">創用 CC 姓名標示-非商業性-相同方式分享 3.0 台灣 授權條款</a>授權<br><a href="http://lope.linguistics.ntu.edu.tw/LOPEN/" target="_blank">LOPEN Project 語言,本體資源與知識開放計劃</a> | <a href="/copens">Corpora Open and Search (COPENS) 開放語料庫與搜尋工具</a>
+</p>
+        </div>
+    </footer>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var sidenav = document.querySelectorAll('.sidenav');
+        var options = {
+            preventScrolling: false,
+        };
+        var instance_sidenav = M.Sidenav.init(sidenav, options);
+        
+        // login modal
+        var modal = document.querySelectorAll('.modal');
+        var instance_modal = M.Modal.init(modal);
+        console.log(modal);
+        console.log(instance_modal);
+    });
+    </script>
+    {% block extra_js %} {% endblock %}
+</body>
+
+</html>
